@@ -29,6 +29,8 @@ pub struct GeoIpPrivMsgEvent {
 
 pub struct Iai55Chan {}
 
+pub struct Goofy {}
+
 impl Default for GeoIpPrivMsgEvent {
     fn default() -> Self {
         GeoIpPrivMsgEvent {
@@ -91,6 +93,19 @@ impl PrivMsgEvent for Iai55Chan {
             return Some(PrivMsgResponse {
                 target: request.source.clone(),
                 message: "DA HORA?!".to_string(),
+            });
+        }
+
+        None
+    }
+}
+
+impl PrivMsgEvent for Goofy {
+    fn execute(&self, request: PrivMsgRequest) -> Option<PrivMsgResponse> {
+        if request.message.eq(">:3") {
+            return Some(PrivMsgResponse {
+                target: request.source.clone(),
+                message: "JESUS CHRIST IT'S A LION, GET IN THE CAR!".to_string(),
             });
         }
 

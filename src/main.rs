@@ -13,7 +13,7 @@ use crate::config::IrcConfig;
 use crate::ctcp::{ClientInfoCtcpResponse, CtcpEvent, FingerCtcpResponse, PingCtcpResponse, SourceCtcpResponse, TimeCtcpResponse, UserInfoCtcpResponse, VersionCtcpResponse};
 use crate::irc_handler::IrcHandler;
 use crate::irc_state::IrcState;
-use crate::privmsg::{GeoIpPrivMsgEvent, Iai55Chan, PrivMsgEvent};
+use crate::privmsg::{GeoIpPrivMsgEvent, Iai55Chan, Goofy, PrivMsgEvent};
 
 mod ctcp;
 mod irc_ext;
@@ -59,6 +59,7 @@ fn main() -> Result<()> {
                                 match plugin.as_str() {
                                     "geoip" => privmsg_plugins.push(Box::new(GeoIpPrivMsgEvent { ..Default::default() })),
                                     "iai_55chan" => privmsg_plugins.push(Box::new(Iai55Chan {})),
+                                    "goofy" => privmsg_plugins.push(Box::new(Goofy {})),
                                     _ => log::warn!("Unknown plugin: {}", plugin),
                                 }
                             }
