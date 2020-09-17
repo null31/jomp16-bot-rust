@@ -25,11 +25,12 @@ servers:
         - "TIME"
         - "VERSION"
         - "USERINFO"
-      version: "jomp16-bot 0.0.1"
-      source: "https://git.rwx.ovh/jomp16/jomp16-bot-rust"
+      version: "jomp16-bot 0.1.0"
+      source: "https://github.com/null31/jomp16-bot-rust"
     channels:
       - name: "#AAAAA"
         password: ""
     privmsg_plugins:
       - "geoip"
       - "iai_55chan"
+      - "goofy"
