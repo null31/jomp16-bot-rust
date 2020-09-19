@@ -34,3 +34,4 @@ servers:
       - "geoip"
       - "iai_55chan"
       - "goofy"
+      - "nsfw"

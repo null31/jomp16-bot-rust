@@ -31,6 +31,8 @@ pub struct Iai55Chan {}
 
 pub struct Goofy {}
 
+pub struct Nsfw {}
+
 impl Default for GeoIpPrivMsgEvent {
     fn default() -> Self {
         GeoIpPrivMsgEvent {
@@ -109,6 +111,18 @@ impl PrivMsgEvent for Goofy {
             });
         }
 
+        None
+    }
+}
+
+impl PrivMsgEvent for Nsfw {
+    fn execute(&self, request: PrivMsgRequest) -> Option<PrivMsgResponse> {
+        if request.message.to_lowercase().contains("nsfw") {
+            return Some(PrivMsgResponse {
+                target: request.source.clone(),
+                message: "Nani are?! KIMOI~".to_string(),
+            });
+        }
         None
     }
 }
