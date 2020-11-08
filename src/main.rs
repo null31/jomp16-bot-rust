@@ -1,6 +1,5 @@
 extern crate pretty_env_logger;
 
-use std::env;
 use std::fs::File;
 use std::net::ToSocketAddrs;
 
@@ -25,10 +24,6 @@ mod config;
 
 fn main() -> Result<()> {
     task::block_on(async {
-        if env::var_os("RUST_LOG").is_none() {
-            env::set_var("RUST_LOG", "jomp16_bot_own=debug");
-        }
-
         pretty_env_logger::init();
 
         let config: IrcConfig = serde_yaml::from_reader(File::open("config.yml")?)?;
